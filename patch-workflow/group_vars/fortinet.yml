@@ -2,4 +2,5 @@ vdom: root
 ansible_network_os: fortinet.fortios.fortios
 ansible_httpapi_use_ssl: yes
 ansible_httpapi_validate_certs: no
+ansible_httpapi_pass: "your_fortigate_api_token"
 email_password: "your_email_password_here"
