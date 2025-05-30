@@ -1,0 +1,8 @@
+all:
+  children:
+    fortinet:
+      hosts:
+        fortigate01:
+          ansible_host: 192.168.x.x
+          ansible_user: admin
+          ansible_password: your_password_here
