@@ -1,0 +1,27 @@
+- name: Apply Fortigate Update with Local Firmware File
+  hosts: fortigate01
+  connection: httpapi
+  collections:
+  - fortinet.fortios
+  vars:
+    vdom: "root"
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
+    ansible_httpapi_port: 443
+    fortigate_api_token: "skwmn6g76p311c6stdQfHrywjz4H18"
+    fortigate_serial: "FGVMEVWFDVUWOKE6" # Your FortiGate serial number
+    local_firmware_file_path: "firmwares/FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
+    remote_firmware_filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
+
+  tasks:
+  - name: Firmware Upgrade
+    fortinet.fortios.fortios_monitor:
+      access_token: "{{ fortigate_api_token }}"
+      vdom: "{{ vdom }}"
+      enable_log: true
+      selector: "upgrade.system.firmware"
+      params:
+        source: "upload"
+        filename: "{{ remote_firmware_filename }}"
+        file_content: "{{ lookup('file', './firmwares/FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | b64encode }}"
+    register: upgrade_result
