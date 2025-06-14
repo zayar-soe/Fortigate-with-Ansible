@@ -9,7 +9,7 @@
    ansible_httpapi_validate_certs: no
    ansible_httpapi_port: 80
   tasks:
-  - name: change_hostname
+  - name: change_hostname.yaml
     fortios_system_global:
       vdom:  "{{ vdom }}"
       system_global:
