@@ -12,4 +12,5 @@
     fortios_system_global:
       vdom:  "{{ vdom }}"
         system_global:
+          admintimeout: "60"
           hostname: 'FW'
