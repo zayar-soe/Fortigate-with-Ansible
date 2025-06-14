@@ -1,3 +1,4 @@
+---
 - hosts: fortigate01
   connection: httpapi
   collections:
@@ -13,4 +14,4 @@
       vdom:  "{{ vdom }}"
         system_global:
           admintimeout: "60"
-          hostname: 'FW'
+          hostname: "fw02"
