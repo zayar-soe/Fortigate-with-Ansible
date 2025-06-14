@@ -1,18 +1,16 @@
 ---
-- name: Change FortiGate Hostname
-  hosts: fortigates
+- hosts: fortigates
+  gather_facts: false
   connection: httpapi
-  gather_facts: no
-  collections:
-    - fortinet.fortios
-
   vars:
-    vdom: "root"
-
+    vdom: root
   tasks:
-    - name: Set FortiGate hostname
+    - name: Change hostname
       fortinet.fortios.fortios_system_global:
-        access_token: "{{ fortigate_api_token }}"
         vdom: "{{ vdom }}"
         system_global:
-          hostname: 'Fortigate01'
+          hostname: "Fortigate01"
+        state: present
+        access_token: "{{ fortigate_api_token }}"
+        use_ssl: true
+        validate_certs: false
