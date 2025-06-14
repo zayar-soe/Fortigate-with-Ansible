@@ -1,16 +1,15 @@
----
-- hosts: fortigates
-  gather_facts: false
+- hosts: fortigate01
   connection: httpapi
+  collections:
+  - fortinet.fortios
   vars:
-    vdom: root
+   vdom: "root"
+   ansible_httpapi_use_ssl: true
+   ansible_httpapi_validate_certs: false
+   ansible_httpapi_port: 443
   tasks:
-    - name: Change hostname
-      fortinet.fortios.fortios_system_global:
-        vdom: "{{ vdom }}"
+   - name: Configure global attributes.
+     fortios_system_global:
+        vdom:  "{{ vdom }}"
         system_global:
-          hostname: "Fortigate01"
-        state: present
-        access_token: "{{ fortigate_api_token }}"
-        use_ssl: true
-        validate_certs: false
+            hostname: 'FW02'
