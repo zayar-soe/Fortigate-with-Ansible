@@ -12,6 +12,6 @@
   - name: change_hostname
     fortios_system_global:
       vdom:  "{{ vdom }}"
-        system_global:
+      system_global:
           admintimeout: "60"
           hostname: "fw02"
