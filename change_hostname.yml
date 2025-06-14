@@ -4,12 +4,12 @@
   - fortinet.fortios
   vars:
    vdom: "root"
-   ansible_httpapi_use_ssl: true
-   ansible_httpapi_validate_certs: false
+   ansible_httpapi_use_ssl: no
+   ansible_httpapi_validate_certs: no
    ansible_httpapi_port: 80
   tasks:
-  - name: Change hostname
+  - name: change_hostname
     fortios_system_global:
       vdom:  "{{ vdom }}"
         system_global:
-          hostname: 'YOUR_OWN_VALUE'
+          hostname: 'FW'
