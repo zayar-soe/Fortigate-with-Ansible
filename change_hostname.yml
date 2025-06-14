@@ -11,7 +11,7 @@
 
   tasks:
     - name: Set FortiGate hostname
-      fortios_system_global:
+      fortinet.fortios.fortios_system_global:
         access_token: "{{ fortigate_api_token }}"
         vdom: "{{ vdom }}"
         system_global:
