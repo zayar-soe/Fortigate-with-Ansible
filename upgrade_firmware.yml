@@ -9,13 +9,13 @@
     vdom: "root"
 
   tasks:
-    - name: Trigger firmware upgrade from FortiGuard
-      fortinet.fortios.fortios_monitor:
+    - name: firmware upgrade
+      fortinet.fortios.fortios_system_fortiguard:
         vdom: "{{ vdom }}"
-        selector: "upgrade.system.firmware"
-        params:
-          source: "fortiguard"
-      register: result
+        system_fortiguard:
+          auto_firmware_upgrade: "enable"
+          auto_firmware_upgrade_start_hour: "0"
+      register: result    
 
     - name: Show result
       debug:
