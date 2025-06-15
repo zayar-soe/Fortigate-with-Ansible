@@ -1,0 +1,9 @@
+- name: Get current firmware version
+  fortinet.fortios.fortios_monitor:
+    vdom: "{{ vdom }}"
+    selector: "system.status"
+  register: version_info
+
+- name: Show current firmware
+  debug:
+    var: version_info.meta.version
