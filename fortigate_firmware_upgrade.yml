@@ -10,7 +10,6 @@
   tasks:
   - name: Firmware Upgrade
     fortinet.fortios.fortios_monitor:
-      access_token: "{{ fortigate_api_token }}"
       vdom: "{{ vdom }}"
       enable_log: true
       selector: "upgrade.system.firmware"
