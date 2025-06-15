@@ -1,9 +1,19 @@
-- name: Get current firmware version
-  fortinet.fortios.fortios_monitor:
-    vdom: "{{ vdom }}"
-    selector: "system.status"
-  register: version_info
+- hosts: fortigate01
+  connection: httpapi
+  gather_facts: no
+  collections:
+    - fortinet.fortios
 
-- name: Show current firmware
-  debug:
-    var: version_info.meta.version
+  vars:
+    vdom: "root"
+
+  tasks:
+    - name: Get current firmware version
+      fortinet.fortios.fortios_monitor:
+        vdom: "{{ vdom }}"
+        selector: "system.status"
+      register: version_info
+    
+    - name: Show current firmware
+      debug:
+        var: version_info.meta.version
