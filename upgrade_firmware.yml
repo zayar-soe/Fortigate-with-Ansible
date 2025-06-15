@@ -1,0 +1,22 @@
+- name: Apply FortiGate Firmware Upgrade from FortiGuard
+  hosts: fortigate01
+  connection: httpapi
+  gather_facts: no
+  collections:
+    - fortinet.fortios
+
+  vars:
+    vdom: "root"
+
+  tasks:
+    - name: Trigger Firmware Upgrade from FortiGuard
+      fortinet.fortios.fortios_system_firmware_upgrade:
+        vdom: "{{ vdom }}"
+        system_firmware_upgrade:
+          source: "fortiguard"
+          scheduled_time: "now"
+      register: upgrade_result
+
+    - name: Debug upgrade result
+      debug:
+        var: upgrade_result
