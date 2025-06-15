@@ -8,10 +8,10 @@
     vdom: "root"
 
   tasks:
-    - name: Get current firmware version
+    - name: Get update firmware version
       fortinet.fortios.fortios_monitor:
         vdom: "{{ vdom }}"
-        selector: "system.status"
+        selector: "update.system.fortiguard"
       register: version_info
     
     - name: Show current firmware
