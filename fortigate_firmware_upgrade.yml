@@ -3,18 +3,18 @@
   connection: httpapi
   collections:
   - fortinet.fortios
-  vars:
-    local_firmware_file_path: "firmwares/FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
-    remote_firmware_filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
-
   tasks:
   - name: Firmware Upgrade
     fortinet.fortios.fortios_monitor:
       vdom: "{{ vdom }}"
       enable_log: true
       selector: "upgrade.system.firmware"
+      
       params:
-        source: "upload"
-        filename: "{{ remote_firmware_filename }}"
-        file_content: "{{ lookup('file', './firmwares/FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | b64encode }}"
+        source: "ftp"
+        hostname: "192.168.179.108"  
+        filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
+        username: "anonymous"  
+        password: ""
+        file_content: "{{ lookup('file', 'FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | b64encode }}"
     register: upgrade_result
