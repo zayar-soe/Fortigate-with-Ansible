@@ -15,10 +15,8 @@
         selector: "upgrade.system.firmware"
         params:
           source: "ftp"
-          hostname: "192.168.179.108"
+          url: "ftp://anonymous:@192.168.179.108/FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
           filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
-          username: "anonymous"
-          password: ""
       register: upgrade_result
 
     - name: Show result
