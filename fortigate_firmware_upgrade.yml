@@ -1,20 +1,26 @@
-- name: Apply Fortigate Update with Local Firmware File
+- name: Apply FortiGate Update via FTP
   hosts: fortigate01
   connection: httpapi
   collections:
-  - fortinet.fortios
+    - fortinet.fortios
+
+  vars:
+    vdom: "root"
+
   tasks:
-  - name: Firmware Upgrade
-    fortinet.fortios.fortios_monitor:
-      vdom: "{{ vdom }}"
-      enable_log: true
-      selector: "upgrade.system.firmware"
-      
-      params:
-        source: "ftp"
-        hostname: "192.168.179.108"  
-        filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
-        username: "anonymous"  
-        password: ""
-        file_content: "{{ lookup('file', 'FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | b64encode }}"
-    register: upgrade_result
+    - name: Trigger firmware upgrade from FTP
+      fortinet.fortios.fortios_monitor:
+        vdom: "{{ vdom }}"
+        enable_log: true
+        selector: "upgrade.system.firmware"
+        params:
+          source: "ftp"
+          hostname: "192.168.179.108"
+          filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
+          username: "anonymous"
+          password: ""
+      register: upgrade_result
+
+    - name: Show result
+      debug:
+        var: upgrade_result
