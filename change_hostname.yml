@@ -14,4 +14,4 @@
       vdom:  "{{ vdom }}"
       system_global:
           admintimeout: "60"
-          hostname: "fw02"
+          hostname: "pptech_FW01"
