@@ -4,7 +4,7 @@
   collections:
   - fortinet.fortios
   vars:
-    local_firmware_file_path: "firmwares/FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
+    local_firmware_file_path: "firmware/FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
     remote_firmware_filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
 
   tasks:
@@ -16,7 +16,7 @@
       params:
         source: "upload"
         filename: "{{ remote_firmware_filename }}"
-        file_content: "{{ lookup('file', './firmwares/FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | b64encode }}"
+        file_content: "{{ lookup('file', './firmware/FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | b64encode }}"
     register: upgrade_result
 
 
