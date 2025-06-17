@@ -7,15 +7,20 @@
 
   vars:
     vdom: "root"
+    firmware_url: "http://192.168.179.108:9090/FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
+    firmware_filename: "FGT_VM64-v7.6.3.F-build3510-FORTINET.out"
 
   tasks:
-    - name: firmware upgrade
-      fortinet.fortios.fortios_system_fortiguard:
+    - name: Trigger firmware upgrade
+      fortinet.fortios.fortios_monitor:
         vdom: "{{ vdom }}"
-        system_fortiguard:
-          auto_firmware_upgrade: "enable"
-          auto_firmware_upgrade_start_hour: "0"
-      register: result    
+        selector: "upgrade.system.firmware"
+        enable_log: true
+        params:
+          source: "http"
+          url: "{{ firmware_url }}"
+          filename: "{{ firmware_filename }}"
+      register: upgrade_result  
 
     - name: Show result
       debug:
