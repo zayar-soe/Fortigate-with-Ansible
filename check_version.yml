@@ -10,7 +10,6 @@
   tasks:
     - name: Get update firmware version
       fortinet.fortios.fortios_monitor:
-        access_token: "{{ access_token }}"
         vdom: "{{ vdom }}"
         selector: "update.system.fortiguard"
       register: version_info
