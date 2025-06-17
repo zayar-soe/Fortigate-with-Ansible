@@ -1,4 +1,4 @@
-- hosts: fortigate01
+- hosts: fortigates
   connection: httpapi
   gather_facts: no
   collections:
