@@ -1,5 +1,5 @@
 ---
-- hosts: fortigate01
+- hosts: fortigate02
   connection: httpapi
   collections:
   - fortinet.fortios
@@ -14,4 +14,4 @@
       vdom:  "{{ vdom }}"
       system_global:
           admintimeout: "60"
-          hostname: "pptech_FW01"
+          hostname: "pptech_FW02"
