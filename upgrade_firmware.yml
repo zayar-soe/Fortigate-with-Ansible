@@ -1,5 +1,5 @@
 - name: Upgrade FortiGate firmware from FortiGuard
-  hosts: fortigate01
+  hosts: fortigates
   connection: httpapi
   gather_facts: no
   collections:
