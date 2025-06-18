@@ -1,0 +1,31 @@
+- hosts: fortigates
+  collections:
+    - fortinet.fortios
+  connection: httpapi
+  gather_facts: "False"
+
+  vars:
+
+    vdom: "root"
+    ansible_httpapi_use_ssl: yes
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 443
+
+  tasks:
+
+- name: Upload firmware image
+    fortinet.fortios.fortios_monitor:
+      selector: 'upload.wifi.firmware'
+      vdom: "{{ vdom }}"
+      params: 
+        serials: '{{ fortigate_serial }}'
+        file_content: "{{ lookup( 'file', './FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | string | b64encode }}"
+
+  - name: Upgrade firmware 
+    fortinet.fortios.fortios_monitor:
+      vdom: "{{ vdom }}"
+      selector: 'upgrade.system.firmware'
+      params:
+        source: "upload"
+        filename: 'FGT_VM64-v7.6.3.F-build3510-FORTINET.out'
+        file_content: x"{{ lookup( 'file', './FGT_VM64-v7.6.3.F-build3510-FORTINET.out') | string | b64encode }}"
