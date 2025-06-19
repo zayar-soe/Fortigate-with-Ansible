@@ -1,5 +1,5 @@
 ---
-- hosts: fortigate02
+- hosts: fortigate03
   connection: httpapi
   collections:
   - fortinet.fortios
@@ -9,9 +9,9 @@
    ansible_httpapi_validate_certs: no
    ansible_httpapi_port: 80
   tasks:
-  - name: change_hostname.yaml
+  - name: change_hostname
     fortios_system_global:
       vdom:  "{{ vdom }}"
       system_global:
           admintimeout: "60"
-          hostname: "pptech_FW02"
+          hostname: "pptech_FW03"
