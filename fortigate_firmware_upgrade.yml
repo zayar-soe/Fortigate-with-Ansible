@@ -23,3 +23,10 @@
   - name: Show result
     debug:
       var: upgrade_result
+
+  - name: Reboot FortiGate
+    fortinet.fortios.fortios_monitor:
+       vdom: "{{ vdom }}"
+       selector: "reboot.system.os"
+       params:
+         event_log_message: "Reboot triggered by Ansible after firmware upgrade"
