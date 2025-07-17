@@ -6,6 +6,7 @@
   vars:
     local_firmware_file_path: "firmware/FOS_VM64_KVM-v7.2.11.M-build1740-FORTINET.out"
     remote_firmware_filename: "FOS_VM64_KVM-v7.2.11.M-build1740-FORTINET.out"
+    ansible_httpapi_timeout: 300
 
   tasks:
   - name: Firmware Upgrade
