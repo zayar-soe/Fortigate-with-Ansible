@@ -1,5 +1,5 @@
 - name: Apply Fortigate Update with Local Firmware File
-  hosts: FGT01
+  hosts: fortigates
   connection: httpapi
   collections:
   - fortinet.fortios
