@@ -1,0 +1,11 @@
+---
+- hosts: fortigate01
+  connection: httpapi
+  collections:
+  - fortinet.fortios
+  
+  tasks:
+  - name: Get multiple selectors info concurrently
+    fortinet.fortios.fortios_configuration_fact:
+        selectors:
+        - selector: system_interface
