@@ -5,7 +5,13 @@
   - fortinet.fortios
   
   tasks:
-  - name: Get multiple selectors info concurrently
-    fortinet.fortios.fortios_configuration_fact:
-        selectors:
-        - selector: system_interface
+  - name: Save config revision on FortiGate
+    fortinet.fortios.fortios_monitor:
+      vdom: "root"
+      selector: "save.system.config-revision"
+      access_token: "{{ fortitoken }}"
+      fos_ip: "{{ inventory_hostname }}"
+      fos_validate_certs: false
+      params:
+        name: "pre-upgrade-snapshot"
+        comment: "Auto backup before firmware upgrade"
