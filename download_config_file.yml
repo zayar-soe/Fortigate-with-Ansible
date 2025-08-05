@@ -23,5 +23,4 @@
       copy:
         content: "{{ config_response.content }}"
         dest: "{{ config_output_file }}"
-      delegated_to: localhost
-      run_once: true
+
