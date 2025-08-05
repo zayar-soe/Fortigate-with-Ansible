@@ -1,5 +1,5 @@
 ---
-- hosts: fortigate01
+- hosts: fortigates
   connection: httpapi
   collections:
   - fortinet.fortios
