@@ -21,9 +21,6 @@
     register: upgrade_result
 
 
-  - name: Show result
-    debug:
-      var: upgrade_result
 
 
 
