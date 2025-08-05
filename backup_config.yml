@@ -21,4 +21,6 @@
     - name: Save the backup information.
       copy:
        content: '{{ backupinfo.meta.raw }}'
-       dest: './fw1.cfg'
+       dest: '/tmp/fw1.cfg'
+      delegate_to: localhost
+      run_once: true
