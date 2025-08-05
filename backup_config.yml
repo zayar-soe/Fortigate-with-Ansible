@@ -10,8 +10,6 @@
       vdom: "root"
       selector: "save.system.config-revision"
       access_token: "{{ fortigate_api_token }}"
-      fos_ip: "{{ ansible_host }}"
-      fos_validate_certs: false
       params:
         name: "pre-upgrade-snapshot"
         comment: "Auto backup before firmware upgrade"
