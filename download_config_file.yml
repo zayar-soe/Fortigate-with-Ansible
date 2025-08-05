@@ -6,6 +6,7 @@
   vars:
     config_output_file: "/ansible_backup/fw1.cfg"
     fortigate_host: 192.168.204.8
+    fortios_access_token: tw4s3g76NbNczbzNmqz88G71sssmkm
 
   tasks:
     - name: Download full configuration from FortiGate
