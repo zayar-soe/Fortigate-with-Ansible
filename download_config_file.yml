@@ -6,7 +6,7 @@
   vars:
     config_output_file: "/tmp/fw1.cfg"
     fortigate_host: 192.168.204.8
-    fortios_access_token: tw4s3g76NbNczbzNmqz88G71sssmkm
+    fortios_access_token: 51b083qjkqgGx0t4crmHhQsbgcjg10
 
   tasks:
     - name: Download full configuration from FortiGate
