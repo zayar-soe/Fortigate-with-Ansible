@@ -1,0 +1,14 @@
+- hosts: fortigates
+  connection: httpapi
+  gather_facts: no
+  collections:
+    - fortinet.fortios
+
+  vars:
+    vdom: "root"
+
+  tasks:
+    - name: Save System Config
+      fortinet.fortios.fortios_monitor:
+        vdom: "{{ vdom }}"
+        selector: "save.system.config-revision"
