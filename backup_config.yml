@@ -6,17 +6,19 @@
   - fortinet.fortios
   
   vars:
-    vdom: "{{ vdom }}"
-  
+    vdom: "root"
+    
   tasks:
-    - name: Save config revision on FortiGate
+    - name: Backup a virtual domain.
       fortinet.fortios.fortios_monitor:
-        vdom: "{{ vdom }}"
-        selector: "save.system.config-revision"
+       access_token: "{{ fortios_access_token }}"
+       selector: 'backup.system.config'
+       vdom: "{{ vdom }}"
+       params:
+           scope: 'global'
+      register: backupinfo
 
-        
-    - name: Backup Syatem config on FortiGate
-      fortinet.fortios.fortios_monitor:
-        vdom: "{{ vdom }}"
-        selector: "backup.system.config"
-
+    - name: Save the backup information.
+      copy:
+       content: '{{ backupinfo.meta.raw }}'
+       dest: './fw1.cfg'
