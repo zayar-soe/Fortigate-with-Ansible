@@ -4,7 +4,7 @@
   gather_facts: no
 
   vars:
-    config_output_file: "/tmp/fw1.cfg"
+    config_output_file: "/var/lib/aap_backups/fw1.cfg"
     fortigate_host: 192.168.204.8
     fortios_access_token: tw4s3g76NbNczbzNmqz88G71sssmkm
 
@@ -23,3 +23,5 @@
       copy:
         content: "{{ config_response.content }}"
         dest: "{{ config_output_file }}"
+      delegated_to: localhost
+      run_once: true
