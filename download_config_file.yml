@@ -5,6 +5,7 @@
 
   vars:
     config_output_file: "/tmp/fw1.cfg"
+    fortigate_host: 192.168.204.13
 
   tasks:
     - name: Download full configuration from FortiGate
