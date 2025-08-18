@@ -19,7 +19,10 @@
         filename: "{{ remote_firmware_filename }}"
         file_content: "{{ lookup('file', './firmware/FOS_VM64_KVM-v7.2.11.M-build1740-FORTINET.out') | b64encode }}"
     register: upgrade_result
-
+    
+  - name: Wait 180 seconds for booting
+    pause:
+       seconds: 180
   - name: Get Success firmware version
     fortinet.fortios.fortios_monitor:
        vdom: "{{ vdom }}"
@@ -29,6 +32,7 @@
   - name: Show Updated firmware Version
     debug:
        var: version_info.meta.version
+
 
 
 
