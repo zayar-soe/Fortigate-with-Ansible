@@ -4,7 +4,7 @@
   gather_facts: no
 
   vars:
-    config_output_file: "/tmp/fw1.cfg"
+    config_output_file: "home/controller_node01/aap/controller/data/projects/_40__test_fgt_fw"
     fortigate_host: 192.168.204.37
 
   tasks:
