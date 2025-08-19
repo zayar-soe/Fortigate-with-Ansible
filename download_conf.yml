@@ -1,0 +1,24 @@
+- name: Download FortiGate config and save to AAP controller
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    config_output_file: "/tmp/fw1.cfg"
+    fortigate_host: 192.168.204.37
+
+  tasks:
+    - name: Download full configuration from FortiGate
+      uri:
+        url: "https://{{ fortigate_host }}/api/v2/monitor/system/config/backup?scope=global"
+        method: GET
+        headers:
+          Authorization: "Bearer {{ fortios_access_token }}"
+        validate_certs: no
+        return_content: yes
+      register: config_response
+
+    - name: Save configuration to file
+      copy:
+        content: "{{ config_response.content }}"
+        dest: "{{ config_output_file }}"
